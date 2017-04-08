@@ -84,7 +84,7 @@ class BaseAdvancedSearchController extends BaseRefineableSearchController {
 			 && 
 			 $t_form->load($vn_form_id) 
 			 && 
-			 ($t_form->get('table_num') == $this->opo_datamodel->getTableNum($this->ops_tablename))
+			 ($t_form->get('table_num') == Datamodel::getTableNum($this->ops_tablename))
 		)) {
 			if (sizeof($va_forms = $t_form->getForms(array('table' => $this->ops_tablename, 'user_id' => $this->request->getUserID(), 'access' => __CA_SEARCH_FORM_READ_ACCESS__, 'restrictToTypes' => [$this->opn_type_restriction_id])))) {
 				$va_tmp = array_keys($va_forms);
@@ -187,7 +187,7 @@ class BaseAdvancedSearchController extends BaseRefineableSearchController {
 		//
 		// Set up view for display of results
 		//
-		$t_model = $this->opo_datamodel->getTableInstance($this->ops_tablename);
+		$t_model = Datamodel::getInstance($this->ops_tablename);
 
 		$this->view->setVar('views', $this->opa_views);	// pass view list to view for rendering
 		$this->view->setVar('current_view', $vs_view);
@@ -322,7 +322,7 @@ class BaseAdvancedSearchController extends BaseRefineableSearchController {
 		$va_form_data = $this->opo_result_context->getParameter('form_data');
 
 		$va_buf = array();
-		if (!($t_model = $this->opo_datamodel->getTableInstance($this->ops_tablename, true))) { return '?'; }
+		if (!($t_model = Datamodel::getInstance($this->ops_tablename, true))) { return '?'; }
 		foreach($va_form_data as $vs_bundle => $vs_value) {
 			if (!$vs_value || (!is_array($vs_value) && !trim($vs_value))) { continue; }
 			$va_buf[] = $t_model->getDisplayLabel($vs_bundle).": ".$vs_value;

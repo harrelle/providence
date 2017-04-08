@@ -34,7 +34,6 @@
   *
   */
  
- include_once(__CA_LIB_DIR__.'/core/Datamodel.php');
  include_once(__CA_LIB_DIR__.'/core/Plugins/WLPlug.php');
  include_once(__CA_LIB_DIR__.'/core/Plugins/IWLPlugSearchEngineResult.php');
 
@@ -57,9 +56,8 @@ class WLPlugSearchEngineSqlSearchResult extends WLPlug implements IWLPlugSearchE
 		$this->opn_current_row = -1;
 		
 		if (sizeof($this->opa_hits)) {
-			$o_dm = Datamodel::load();
-			
-			$this->opo_subject_instance = $o_dm->getInstanceByTableNum($this->opn_subject_tablenum, true);
+						
+			$this->opo_subject_instance = Datamodel::getInstanceByTableNum($this->opn_subject_tablenum, true);
 			$this->ops_subject_primary_key = $this->opo_subject_instance->primaryKey();
 			$this->ops_subject_table_name = $this->opo_subject_instance->tableName();
 		}

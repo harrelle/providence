@@ -488,7 +488,7 @@ class ca_item_comments extends BaseModel {
     public function getItem() {
         if (!$this->getPrimaryKey()) { return null; }
 
-        if (!($t_item = $this->getAppDatamodel()->getInstanceByTableNum($this->get('table_num')))) { return false; }
+        if (!($t_item = Datamodel::getInstanceByTableNum($this->get('table_num')))) { return false; }
 
         if ($t_item->load($this->get('row_id'))) {
             return $t_item;

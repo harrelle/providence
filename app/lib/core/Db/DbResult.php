@@ -317,7 +317,7 @@ class DbResult extends DbBase {
 				return DbResult::$s_field_info_cache[$ps_field] = array("table" => null, "field" => $ps_field, "instance" => null);
 				break;
 			case 2:		// table.field format fieldname
-				$o_instance = $this->opo_datamodel->getInstanceByTableName($va_tmp[0], true);
+				$o_instance = Datamodel::getInstanceByTableName($va_tmp[0], true);
 
 				if ($o_instance) {
 					return DbResult::$s_field_info_cache[$ps_field] = array("table" => $va_tmp[0], "field" => $va_tmp[1], "instance" => $o_instance);

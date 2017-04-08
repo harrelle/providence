@@ -7,7 +7,7 @@
  * ----------------------------------------------------------------------
  *
  * Software by Whirl-i-Gig (http://www.whirl-i-gig.com)
- * Copyright 2015 Whirl-i-Gig
+ * Copyright 2015-2017 Whirl-i-Gig
  *
  * For more information visit http://www.CollectiveAccess.org
  *
@@ -47,9 +47,8 @@ abstract class AbstractSearchQueryTest extends BaseTestWithData {
 
 	# -------------------------------------------------------
 	protected function setPrimaryTable($ps_table) {
-		$o_dm = Datamodel::load();
 
-		if(!$o_dm->tableExists($ps_table)) {
+		if(!Datamodel::tableExists($ps_table)) {
 			$this->assertTrue(false, 'Invalid table '.$ps_table);
 		}
 

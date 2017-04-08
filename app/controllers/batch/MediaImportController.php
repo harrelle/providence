@@ -69,7 +69,6 @@
  			AssetLoadManager::register('bundleableEditor');
  			AssetLoadManager::register('panel');
  			
- 			$this->opo_datamodel = Datamodel::load();
  			$this->opo_app_plugin_manager = new ApplicationPluginManager();
  			$this->opo_result_context = new ResultContext($po_request, $this->ops_table_name, ResultContext::getLastFind($po_request, $this->ops_table_name));
 
@@ -547,8 +546,6 @@
  		 * @param array $pa_parameters Array of parameters as specified in navigation.conf, including primary key value and type_id
  		 */
  		public function info($pa_parameters) {
- 			$o_dm 				= Datamodel::load();
- 			
 			$this->view->setVar('screen', $this->request->getActionExtra());						// name of screen
 			$this->view->setVar('result_context', $this->getResultContext());
 			

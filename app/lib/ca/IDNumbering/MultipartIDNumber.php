@@ -31,7 +31,6 @@
  */
  
 require_once(__CA_LIB_DIR__."/core/Configuration.php");
-require_once(__CA_LIB_DIR__."/core/Datamodel.php");
 require_once(__CA_LIB_DIR__."/core/Db.php");
 require_once(__CA_LIB_DIR__."/ca/IDNumbering/IDNumber.php");
 require_once(__CA_LIB_DIR__."/ca/IDNumbering/IIDNumbering.php");
@@ -654,8 +653,7 @@ class MultipartIDNumber extends IDNumber {
 		// Get the next number based upon field data
 		$vn_type_id = null;
 		
-		$o_dm = Datamodel::load();
-		if (!($t_instance = $o_dm->getInstanceByTableName($vs_table, true))) { return 'ERR'; }
+		if (!($t_instance = Datamodel::getInstanceByTableName($vs_table, true))) { return 'ERR'; }
 		if ((bool)$va_element_info['sequence_by_type']) {
 			$vn_type_id = (int)$t_instance->getTypeIDForCode($this->getType());
 		}

@@ -87,7 +87,7 @@ class TourService extends BaseService {
 	 * @return array associative array of bundle contents
 	 */
 	public function get($type,$item_id,$bundles,$options){
-		if(!($t_subject_instance = $this->getTableInstance($type,$item_id,true))){
+		if(!($t_subject_instance = $this->getInstance($type,$item_id,true))){
 			throw new SoapFault("Server", "Invalid type or item_id");
 		}
 		if(!is_array($bundles) && is_string($bundles)){
@@ -129,7 +129,7 @@ class TourService extends BaseService {
 	 * @throws SoapFault
 	 */
 	public function getItem($type, $item_id){
-		if(!($t_subject_instance = $this->getTableInstance($type,$item_id))){
+		if(!($t_subject_instance = $this->getInstance($type,$item_id))){
 			throw new SoapFault("Server", "Invalid type or item_id");
 		}
 		return $t_subject_instance->getValuesForExport();
@@ -144,7 +144,7 @@ class TourService extends BaseService {
 	 * @throws SoapFault
 	 */
 	public function getApplicableElementCodes($type, $type_id, $include_sub_element_codes){
-		if(!($t_subject_instance = $this->getTableInstance($type,null,true))){
+		if(!($t_subject_instance = $this->getInstance($type,null,true))){
 			throw new SoapFault("Server", "Invalid type or item_id");
 		}
 		return $t_subject_instance->getApplicableElementCodes($type_id,$include_sub_element_codes);
@@ -158,7 +158,7 @@ class TourService extends BaseService {
 	 * @throws SoapFault
 	 */
 	public function getAttributes($type, $item_id){
-		if(!($t_subject_instance = $this->getTableInstance($type,$item_id,true))){
+		if(!($t_subject_instance = $this->getInstance($type,$item_id,true))){
 			throw new SoapFault("Server", "Invalid type or item_id");
 		}
 		$va_attrs = $t_subject_instance->getAttributes();
@@ -191,7 +191,7 @@ class TourService extends BaseService {
 	 * @throws SoapFault
 	 */
 	public function getAttributesByElement($type, $item_id, $attribute_code_or_id){
-		if(!($t_subject_instance = $this->getTableInstance($type,$item_id,true))){
+		if(!($t_subject_instance = $this->getInstance($type,$item_id,true))){
 			throw new SoapFault("Server", "Invalid type or item_id");
 		}
 		$t_locale = new ca_locales();
@@ -226,7 +226,7 @@ class TourService extends BaseService {
 	 * @return string
 	 */
 	public function getAttributesForDisplay($type, $item_id, $attribute_code_or_id, $template=null, $options=null){
-		if(!($t_subject_instance = $this->getTableInstance($type,$item_id,true))){
+		if(!($t_subject_instance = $this->getInstance($type,$item_id,true))){
 			throw new SoapFault("Server", "Invalid type or item_id");
 		}
 		return $t_subject_instance->getAttributesForDisplay($attribute_code_or_id, $ps_template=null, $pa_options=null);
@@ -242,7 +242,7 @@ class TourService extends BaseService {
 	 * @throws SoapFault
 	 */
 	public function getLabels($type, $item_id, $mode){
-		if(!($t_subject_instance = $this->getTableInstance($type,$item_id))){
+		if(!($t_subject_instance = $this->getInstance($type,$item_id))){
 			throw new SoapFault("Server", "Invalid type or item_id");
 		}
 		if($t_subject_instance instanceof LabelableBaseModelWithAttributes){
@@ -264,7 +264,7 @@ class TourService extends BaseService {
 	 * @throws SoapFault
 	 */
 	public function getLabelForDisplay($type, $item_id){
-		if(!($t_subject_instance = $this->getTableInstance($type,$item_id))){
+		if(!($t_subject_instance = $this->getInstance($type,$item_id))){
 			throw new SoapFault("Server", "Invalid type or item_id");
 		}
 		if($t_subject_instance instanceof LabelableBaseModelWithAttributes){
@@ -312,7 +312,7 @@ class TourService extends BaseService {
 	 * @throws SoapFault
 	 */
 	public function getRelationships($type, $item_id, $related_type, $options = array()){
-		if(!($t_subject_instance = $this->getTableInstance($type,$item_id))){
+		if(!($t_subject_instance = $this->getInstance($type,$item_id))){
 			throw new SoapFault("Server", "Invalid type or item_id");
 		}
 		if(method_exists($t_subject_instance,"getRelatedItems")){
@@ -333,10 +333,10 @@ class TourService extends BaseService {
 	 * @throws SoapFault
 	 */
 	public function getRelationshipTypes($type, $sub_type_id, $related_type, $related_sub_type_id){
-		if(!($this->getTableInstance($type))){
+		if(!($this->getInstance($type))){
 			throw new SoapFault("Server", "Invalid type");
 		}
-		if(!($this->getTableInstance($related_type))){
+		if(!($this->getInstance($related_type))){
 			throw new SoapFault("Server", "Invalid related type");
 		}
 		$vs_rel_table = $this->getRelTableName($type, $related_type);
@@ -469,7 +469,7 @@ class TourService extends BaseService {
 	# -------------------------------------------------------
 	# Utilities
 	# -------------------------------------------------------
-	private function getTableInstance($ps_type, $pn_type_id_to_load=null,$pb_check_bm_with_attributes=false){
+	private function getInstance($ps_type, $pn_type_id_to_load=null,$pb_check_bm_with_attributes=false){
 		if(!in_array($ps_type, array("ca_tours", "ca_tour_stops"))){
 			throw new SoapFault("Server", "Invalid type or item_id");
 		} else {

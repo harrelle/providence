@@ -282,7 +282,7 @@
  			AssetLoadManager::register('imageScroller');
  			AssetLoadManager::register('ckeditor');
 
- 			if (!($t_subject = $this->opo_datamodel->getInstanceByTableName($this->ops_table_name))) { return null; }
+ 			if (!($t_subject = Datamodel::getInstanceByTableName($this->ops_table_name))) { return null; }
  			
  			if (is_array($pa_options) && isset($pa_options['loadSubject']) && (bool)$pa_options['loadSubject'] && ($vn_subject_id = (int)$this->request->getParameter($t_subject->primaryKey(), pInteger))) {
  				$t_subject->load($vn_subject_id);

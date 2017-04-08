@@ -2074,8 +2074,6 @@
 			require_once(__CA_MODELS_DIR__.'/ca_metadata_dictionary_rules.php');
 			require_once(__CA_MODELS_DIR__.'/ca_metadata_dictionary_rule_violations.php');
 
-			$o_dm = Datamodel::load();
-
 			$t_violation = new ca_metadata_dictionary_rule_violations();
 
 			$va_rules = ca_metadata_dictionary_rules::getRules();
@@ -2089,7 +2087,7 @@
 				$va_expression_tags = caGetTemplateTags($va_rule['expression']);
 
 				$va_tmp = explode(".", $va_rule['bundle_name']);
-				if (!($t_instance = $o_dm->getInstanceByTableName($va_tmp[0]))) {
+				if (!($t_instance = Datamodel::getInstanceByTableName($va_tmp[0]))) {
 					CLIUtils::addError(_t("Table for bundle %1 is not valid", $va_tmp[0]));
 					continue;
 				}
@@ -2202,7 +2200,6 @@
 			$pa_kinds = caGetOption('kinds', $po_opts, 'all', ['forceLowercase' => true, 'validValues' => ['all', 'ca_object_representations', 'ca_attributes'], 'delimiter' => [',', ';']]);
 			
 			$o_db = new Db();
-			$o_dm = Datamodel::load();
 			$t_rep = new ca_object_representations();
 
 			$vs_report_output = join(($ps_format == 'tab') ? "\t" : ",", array(_t('Type'), _t('Error'), _t('Name'), _t('ID'), _t('Version'), _t('File path'), _t('Expected MD5'), _t('Actual MD5')))."\n";
@@ -2350,7 +2347,7 @@
 											$t_attr = new ca_attributes($vn_attribute_id = $t_attr_val->get('attribute_id'));
 
 											$vs_label = "attribute_id={$vn_attribute_id}; value_id={$vn_value_id}";
-											if ($t_instance = $o_dm->getInstanceByTableNum($t_attr->get('table_num'), true)) {
+											if ($t_instance = Datamodel::getInstanceByTableNum($t_attr->get('table_num'), true)) {
 												if ($t_instance->load($t_attr->get('row_id'))) {
 													$vs_label = $t_instance->get($t_instance->tableName().'.preferred_labels');
 													if ($vs_idno = $t_instance->get($t_instance->getProperty('ID_NUMBERING_ID_FIELD'))) {
@@ -2424,7 +2421,7 @@
 										$t_attr = new ca_attributes($vn_attribute_id = $t_attr_val->get('attribute_id'));
 
 										$vs_label = "attribute_id={$vn_attribute_id}; value_id={$vn_value_id}";
-										if ($t_instance = $o_dm->getInstanceByTableNum($t_attr->get('table_num'), true)) {
+										if ($t_instance = Datamodel::getInstanceByTableNum($t_attr->get('table_num'), true)) {
 											if ($t_instance->load($t_attr->get('row_id'))) {
 												$vs_label = $t_instance->get($t_instance->tableName().'.preferred_labels');
 												if ($vs_idno = $t_instance->get($t_instance->getProperty('ID_NUMBERING_ID_FIELD'))) {
@@ -3487,11 +3484,10 @@
 		 *
 		 */
 		public static function generate_missing_guids($po_opts=null) {
-			$o_dm = Datamodel::load();
 			$o_db = new Db();
 
-			foreach($o_dm->getTableNames() as $vs_table) {
-				$t_instance = $o_dm->getInstance($vs_table);
+			foreach(Datamodel::getTableNames() as $vs_table) {
+				$t_instance = Datamodel::getInstance($vs_table);
 				if(
 					($t_instance instanceof BundlableLabelableBaseModelWithAttributes) ||
 					($t_instance instanceof BaseLabel) ||
@@ -3568,7 +3564,7 @@
 						CLIUtils::addMessage(_t('Table %1 has %2 records that have potential duplicates.', $vs_t, sizeof($va_dupes)), array('color' => 'red'));
 
 
-						$t_instance = Datamodel::load()->getInstance($vs_t);
+						$t_instance = Datamodel::getInstance($vs_t);
 
 						foreach ($va_dupes as $vs_sha2 => $va_keys) {
 							CLIUtils::addMessage("\t" . _t('%1 records have the checksum %2', sizeof($va_keys), $vs_sha2));

@@ -507,7 +507,7 @@ class Db extends DbBase {
 	 * @param string $ps_table name of the table
 	 * @return mixed
 	 */
-	public function getTableInstance($ps_table) {
+	public function getInstance($ps_table) {
 		return $this->datamodel->getInstanceByTableName($ps_table);
 	}
 

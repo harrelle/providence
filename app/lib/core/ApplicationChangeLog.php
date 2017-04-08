@@ -7,7 +7,7 @@
  * ----------------------------------------------------------------------
  *
  * Software by Whirl-i-Gig (http://www.whirl-i-gig.com)
- * Copyright 2009-2016 Whirl-i-Gig
+ * Copyright 2009-2017 Whirl-i-Gig
  *
  * For more information visit http://www.CollectiveAccess.org
  *
@@ -395,7 +395,7 @@ require_once(__CA_LIB_DIR__."/core/Db.php");
 										$va_rel = $o_datamodel->getManyToOneRelations($t_obj->tableName(), $vs_field);
 										$va_rel_values = array();
 											
-										if ($t_rel_obj = $o_datamodel->getTableInstance($va_rel['one_table'], true)) {
+										if ($t_rel_obj = $o_datamodel->getInstance($va_rel['one_table'], true)) {
 											$t_rel_obj->load($vs_value);
 											
 											foreach($va_disp_fields as $vs_display_field) {
@@ -414,7 +414,7 @@ require_once(__CA_LIB_DIR__."/core/Db.php");
 										
 										if ($t_user && !$t_user->getBundleAccessLevel($t_item->tableName(), $va_keys['one_table'])) { continue; }	// does user have access to this bundle?
 								
-										if ($t_rel_obj = $o_datamodel->getTableInstance($va_keys['one_table'], true)) {
+										if ($t_rel_obj = $o_datamodel->getInstance($va_keys['one_table'], true)) {
 											if ($t_rel_obj->load($vs_value)) {
 												if (method_exists($t_rel_obj, 'getLabelForDisplay')) {
 													$vs_proc_val = $t_rel_obj->getLabelForDisplay(false);
@@ -592,8 +592,7 @@ require_once(__CA_LIB_DIR__."/core/Db.php");
  		if (!is_array($pa_row_ids) || !sizeof($pa_row_ids)) { return array(); }
  		
  		if (!is_numeric($pm_table_name_or_num)) {
- 			$o_dm = Datamodel::load();
- 			$pn_table_num = (int)$o_dm->getTableNum($pm_table_name_or_num);
+ 			$pn_table_num = (int)Datamodel::getTableNum($pm_table_name_or_num);
  		} else {
  			$pn_table_num = (int)$pm_table_name_or_num;
  		}
@@ -628,8 +627,7 @@ require_once(__CA_LIB_DIR__."/core/Db.php");
  		if (!is_array($pa_row_ids) || !sizeof($pa_row_ids)) { return array(); }
  		
  		if (!is_numeric($pm_table_name_or_num)) {
- 			$o_dm = Datamodel::load();
- 			$pn_table_num = (int)$o_dm->getTableNum($pm_table_name_or_num);
+ 			$pn_table_num = (int)Datamodel::getTableNum($pm_table_name_or_num);
  		} else {
  			$pn_table_num = (int)$pm_table_name_or_num;
  		}
@@ -712,8 +710,7 @@ require_once(__CA_LIB_DIR__."/core/Db.php");
  		if (!is_array($pa_row_ids) || !sizeof($pa_row_ids)) { return array(); }
  		
  		if (!is_numeric($pm_table_name_or_num)) {
- 			$o_dm = Datamodel::load();
- 			$pn_table_num = (int)$o_dm->getTableNum($pm_table_name_or_num);
+ 			$pn_table_num = (int)Datamodel::getTableNum($pm_table_name_or_num);
  		} else {
  			$pn_table_num = (int)$pm_table_name_or_num;
  		}
@@ -747,8 +744,7 @@ require_once(__CA_LIB_DIR__."/core/Db.php");
  	public function getEarliestTimestampForIDs($pm_table_name_or_num, $pa_row_ids=null) {
  		
  		if (!is_numeric($pm_table_name_or_num)) {
- 			$o_dm = Datamodel::load();
- 			$pn_table_num = (int)$o_dm->getTableNum($pm_table_name_or_num);
+ 			$pn_table_num = (int)Datamodel::getTableNum($pm_table_name_or_num);
  		} else {
  			$pn_table_num = (int)$pm_table_name_or_num;
  		}
@@ -790,10 +786,9 @@ require_once(__CA_LIB_DIR__."/core/Db.php");
 	 * @return array Change log data
  	 */
  	public function getDeletions($pm_table_name_or_num, $pa_options=null) {
- 		$o_dm = Datamodel::load();
- 		$vn_table_num = $o_dm->getTableNum($pm_table_name_or_num);
- 		$vs_table_name = $o_dm->getTableName($pm_table_name_or_num);
- 		$t_subject = $o_dm->getInstanceByTableNum($vn_table_num, true);
+ 		$vn_table_num = Datamodel::getTableNum($pm_table_name_or_num);
+ 		$vs_table_name = Datamodel::getTableName($pm_table_name_or_num);
+ 		$t_subject = Datamodel::getInstanceByTableNum($vn_table_num, true);
  		
 		$pa_datetime_range = (isset($pa_options['range']) && is_array($pa_options['range'])) ? $pa_options['range'] : null;
 		$pn_max_num_entries_returned = (isset($pa_options['limit']) && (int)$pa_options['limit']) ? (int)$pa_options['limit'] : 0;

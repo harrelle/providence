@@ -99,7 +99,7 @@ class SearchJSONService extends BaseJSONService {
 			$this->addError(_t("Invalid table"));
 			return false;
 		}
-		$t_instance = $this->_getTableInstance($vs_table_name = $this->getTableName());
+		$t_instance = $this->_getInstance($vs_table_name = $this->getTableName());
 
 		$va_return = array();
 		$vo_result = $vo_search->search($this->ops_query, array(

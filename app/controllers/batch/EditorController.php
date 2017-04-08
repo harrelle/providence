@@ -61,7 +61,6 @@
  			AssetLoadManager::register('bundleListEditorUI');
  			AssetLoadManager::register('panel');
  			
- 			$this->opo_datamodel = Datamodel::load();
  			$this->opo_app_plugin_manager = new ApplicationPluginManager();
  			$this->opo_result_context = new ResultContext($po_request, $this->ops_table_name, ResultContext::getLastFind($po_request, $this->ops_table_name));
  		}
@@ -275,7 +274,7 @@
  			}
  			
  			
- 			$t_subject = $this->opo_datamodel->getInstanceByTableNum($t_set->get('table_num'));
+ 			$t_subject = Datamodel::getInstanceByTableNum($t_set->get('table_num'));
  			$t_ui = new ca_editor_uis();
  			if (!isset($pa_options['ui']) && !$pa_options['ui']) {
  				$t_ui->load($this->request->user->getPreference("batch_".$t_subject->tableName()."_editor_ui"));
@@ -355,7 +354,6 @@
  		public function info($pa_parameters) {
  			$vn_set_id = $this->request->getParameter('set_id', pInteger);
  		
- 			$o_dm 				= Datamodel::load();
  			$t_set				= new ca_sets($vn_set_id);
  			
  			if (!$t_set->getPrimaryKey()) { 
@@ -367,7 +365,7 @@
  				die("You don't have access to the set");
  			}
  			
- 			$t_item 			= $o_dm->getInstanceByTableNum($t_set->get('table_num'), true);
+ 			$t_item 			= Datamodel::getInstanceByTableNum($t_set->get('table_num'), true);
  			
  		
  			$this->view->setVar('t_set', $t_set);

@@ -336,10 +336,9 @@
 		$o_trans = caGetOption('transaction', $pa_options, null);
 		
 		if (is_array($pa_item['settings']["{$ps_refinery_name}_interstitial"])) {
-			$o_dm = Datamodel::load();
-			if (!($ps_import_tablename = $o_dm->getTableName($pm_import_tablename_or_num))) { return null; }
-			if (!($ps_target_tablename = $o_dm->getTableName($pm_target_tablename_or_num))) { return null; }
-			if (!($t_target = $o_dm->getInstanceByTableName($ps_target_tablename, true))) { return null; }
+			if (!($ps_import_tablename = Datamodel::getTableName($pm_import_tablename_or_num))) { return null; }
+			if (!($ps_target_tablename = Datamodel::getTableName($pm_target_tablename_or_num))) { return null; }
+			if (!($t_target = Datamodel::getInstanceByTableName($ps_target_tablename, true))) { return null; }
 			if ($o_trans) { $t_target->setTransaction($o_trans); }
 			$va_attr_vals = array();
 					
@@ -348,7 +347,7 @@
 				
 				$vs_linking_table = null;
 				if ($ps_import_tablename != $ps_target_tablename) {
-					$va_path = $o_dm->getPath($ps_import_tablename, $ps_target_tablename);
+					$va_path = Datamodel::getPath($ps_import_tablename, $ps_target_tablename);
 					$va_path_tables = array_keys($va_path);
 					$vs_linking_table = $va_path_tables[1];
 				} else {
@@ -525,8 +524,7 @@
 		
 		$po_refinery_instance->setReturnsMultipleValues(true);
 		
-		$o_dm = Datamodel::load();
-		
+				
 		$po_refinery_instance->setReturnsMultipleValues(true);
 		$o_log = caGetOption('log', $pa_options, null);
 		$o_reader = caGetOption('reader', $pa_options, null);
@@ -583,7 +581,7 @@
 		
 		$va_vals = array();
 		$vn_c = 0;
-		if (!($t_instance = $o_dm->getInstanceByTableName($ps_table, true))) { return array(); }
+		if (!($t_instance = Datamodel::getInstanceByTableName($ps_table, true))) { return array(); }
 		if ($o_trans) { $t_instance->setTransaction($o_trans); }
 		
 		$vs_label_fld = $t_instance->getLabelDisplayField();
@@ -752,7 +750,7 @@
 					}
 					
 					// Try to pull idno from reader if it's not explicitly set to give us something to match on
-					if (($o_reader instanceof CollectiveAccessDataReader) && ($vs_table_idno_fld = $o_dm->getTableProperty($ps_table, 'ID_NUMBERING_ID_FIELD')) && in_array($vs_table_idno_fld, $pa_options['matchOn']) && !isset($va_val[$vs_table_idno_fld])) { 
+					if (($o_reader instanceof CollectiveAccessDataReader) && ($vs_table_idno_fld = Datamodel::getTableProperty($ps_table, 'ID_NUMBERING_ID_FIELD')) && in_array($vs_table_idno_fld, $pa_options['matchOn']) && !isset($va_val[$vs_table_idno_fld])) { 
 						$va_idno_value_list = $o_reader->get("{$ps_table}.{$vs_table_idno_fld}", ['returnAsArray' => true]);
 						if (isset($va_idno_value_list[$vn_i]) && strlen($va_idno_value_list[$vn_i])) { $va_val[$vs_table_idno_fld] = $va_idno_value_list[$vn_i]; }
 					}
