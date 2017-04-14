@@ -33,9 +33,9 @@
  /**
   *
   */
-	require_once(__CA_LIB_DIR__."/core/BaseObject.php");
-	require_once(__CA_LIB_DIR__."/core/Configuration.php");
- 	require_once(__CA_LIB_DIR__."/ca/ApplicationPluginManager.php");
+	require_once(__CA_LIB_DIR__."/BaseObject.php");
+	require_once(__CA_LIB_DIR__."/Configuration.php");
+ 	require_once(__CA_LIB_DIR__."/ApplicationPluginManager.php");
 	
 	class AppNavigation extends BaseObject {
 		# -------------------------------------------------------

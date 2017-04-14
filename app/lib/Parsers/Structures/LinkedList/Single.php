@@ -55,7 +55,7 @@
  * @todo Add some actual error conditions
  **/
 
-require_once __CA_LIB_DIR__.'/core/Parsers/PEAR/Exception.php';
+require_once __CA_LIB_DIR__.'/Parsers/PEAR/Exception.php';
 
 // {{{ class Structures_LinkedList_Single
 /**

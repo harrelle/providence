@@ -39,16 +39,16 @@
  * @example   marc_yaz.php Pretty print a MARC record retrieved through the PECL yaz extension
  */
 
-require_once __CA_LIB_DIR__.'/core/Parsers/PEAR/Exception.php';
-require_once __CA_LIB_DIR__.'/core/Parsers/Structures/LinkedList/Double.php';
-require_once __CA_LIB_DIR__.'/core/Parsers/File_MARC/MARCBASE.php';
-require_once __CA_LIB_DIR__.'/core/Parsers/File_MARC/MARC/Record.php';
-require_once __CA_LIB_DIR__.'/core/Parsers/File_MARC/MARC/Field.php';
-require_once __CA_LIB_DIR__.'/core/Parsers/File_MARC/MARC/Control_Field.php';
-require_once __CA_LIB_DIR__.'/core/Parsers/File_MARC/MARC/Data_Field.php';
-require_once __CA_LIB_DIR__.'/core/Parsers/File_MARC/MARC/Subfield.php';
-require_once __CA_LIB_DIR__.'/core/Parsers/File_MARC/MARC/Exception.php';
-require_once __CA_LIB_DIR__.'/core/Parsers/File_MARC/MARC/List.php';
+require_once __CA_LIB_DIR__.'/Parsers/PEAR/Exception.php';
+require_once __CA_LIB_DIR__.'/Parsers/Structures/LinkedList/Double.php';
+require_once __CA_LIB_DIR__.'/Parsers/File_MARC/MARCBASE.php';
+require_once __CA_LIB_DIR__.'/Parsers/File_MARC/MARC/Record.php';
+require_once __CA_LIB_DIR__.'/Parsers/File_MARC/MARC/Field.php';
+require_once __CA_LIB_DIR__.'/Parsers/File_MARC/MARC/Control_Field.php';
+require_once __CA_LIB_DIR__.'/Parsers/File_MARC/MARC/Data_Field.php';
+require_once __CA_LIB_DIR__.'/Parsers/File_MARC/MARC/Subfield.php';
+require_once __CA_LIB_DIR__.'/Parsers/File_MARC/MARC/Exception.php';
+require_once __CA_LIB_DIR__.'/Parsers/File_MARC/MARC/List.php';
 
 // {{{ class File_MARC
 /**

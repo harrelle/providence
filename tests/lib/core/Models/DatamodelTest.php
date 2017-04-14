@@ -29,7 +29,7 @@
  * 
  * ----------------------------------------------------------------------
  */
-require_once(__CA_LIB_DIR__.'/core/Datamodel.php');
+require_once(__CA_LIB_DIR__.'/Datamodel.php');
 
 class DatamodelTest extends PHPUnit_Framework_TestCase {
 	public function testInstantiateAllModels() {

@@ -1,6 +1,6 @@
 <?php
 /** ---------------------------------------------------------------------
- * app/lib/core/Cache/ExternalCache.php : provides caching using external facilities
+ * app/libche/ExternalCache.php : provides caching using external facilities
  * ----------------------------------------------------------------------
  * CollectiveAccess
  * Open-source collections management software
@@ -30,8 +30,8 @@
  * ----------------------------------------------------------------------
  */
 
-require_once(__CA_LIB_DIR__."/core/Cache/MemoryCache.php");
-require_once(__CA_LIB_DIR__."/core/Cache/CAFileSystemCache.php");
+require_once(__CA_LIB_DIR__."/Cache/MemoryCache.php");
+require_once(__CA_LIB_DIR__."/Cache/CAFileSystemCache.php");
 
 class ExternalCache {
 	# ------------------------------------------------

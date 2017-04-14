@@ -1,6 +1,6 @@
 <?php
 /** ---------------------------------------------------------------------
- * app/lib/ca/Utils/CLIUtils.php :
+ * app/lib/Utils/CLIUtils.php :
  * ----------------------------------------------------------------------
  * CollectiveAccess
  * Open-source collections management software
@@ -34,7 +34,7 @@
   *
   */
 
- 	require_once(__CA_LIB_DIR__.'/ca/Utils/CLIBaseUtils.php');
+ 	require_once(__CA_LIB_DIR__.'/Utils/CLIBaseUtils.php');
 
 	class CLIUtils extends CLIBaseUtils {
 		# -------------------------------------------------------
@@ -252,7 +252,7 @@
 		 * Rebuild search indices
 		 */
 		public static function rebuild_search_index($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Search/SearchIndexer.php");
+			require_once(__CA_LIB_DIR__."/Search/SearchIndexer.php");
 			ini_set('memory_limit', '4000m');
 			set_time_limit(24 * 60 * 60 * 7); /* maximum indexing time: 7 days :-) */
 
@@ -389,7 +389,7 @@
 		 * Remove media present in media directories but not referenced in database (aka. orphan media)
 		 */
 		public static function remove_unused_media($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Db.php");
+			require_once(__CA_LIB_DIR__."/Db.php");
 			require_once(__CA_MODELS_DIR__."/ca_object_representations.php");
 
 			$vb_delete_opt = (bool)$po_opts->getOption('delete');
@@ -484,7 +484,7 @@
 		 * Remove media present in media directories but not referenced in database (aka. orphan media)
 		 */
 		public static function remove_deleted_representations($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Db.php");
+			require_once(__CA_LIB_DIR__."/Db.php");
 			require_once(__CA_MODELS_DIR__."/ca_object_representations.php");
 
 			$vb_delete_opt = (bool)$po_opts->getOption('delete');
@@ -564,7 +564,7 @@
 		 * Export current system configuration as an XML installation profile
 		 */
 		public static function export_profile($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/ca/ConfigurationExporter.php");
+			require_once(__CA_LIB_DIR__."/ConfigurationExporter.php");
 
 			if(!class_exists("DOMDocument")){
 				CLIUtils::addError(_t("The PHP DOM extension is required to export profiles"));
@@ -633,7 +633,7 @@
 		 * Process queued tasks
 		 */
 		public static function process_task_queue($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/TaskQueue.php");
+			require_once(__CA_LIB_DIR__."/TaskQueue.php");
 
 			$vo_tq = new TaskQueue();
 
@@ -684,7 +684,7 @@
 		 * Reprocess media
 		 */
 		public static function reprocess_media($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Db.php");
+			require_once(__CA_LIB_DIR__."/Db.php");
 			require_once(__CA_MODELS_DIR__."/ca_object_representations.php");
 
 			$o_db = new Db();
@@ -880,7 +880,7 @@
 		 * Reindex PDF media by content for in-PDF search
 		 */
 		public static function reindex_pdfs($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Db.php");
+			require_once(__CA_LIB_DIR__."/Db.php");
 			require_once(__CA_MODELS_DIR__."/ca_object_representations.php");
 
 			if (!caPDFMinerInstalled()) {
@@ -1072,7 +1072,7 @@
 		 * Update database schema
 		 */
 		public static function update_database_schema($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/ca/ConfigurationCheck.php");
+			require_once(__CA_LIB_DIR__."/ConfigurationCheck.php");
 
 			$o_config_check = new ConfigurationCheck();
 			if (($vn_current_revision = ConfigurationCheck::getSchemaVersion()) < __CollectiveAccess_Schema_Rev__) {
@@ -1492,7 +1492,7 @@
 		 *
 		 */
 		public static function regenerate_annotation_previews($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Db.php");
+			require_once(__CA_LIB_DIR__."/Db.php");
 			require_once(__CA_MODELS_DIR__."/ca_representation_annotations.php");
 
 			$o_db = new Db();
@@ -1662,7 +1662,7 @@
 		 *
 		 */
 		public static function replicate_data($po_opts=null) {
-			require_once(__CA_LIB_DIR__.'/ca/Sync/Replicator.php');
+			require_once(__CA_LIB_DIR__.'/Sync/Replicator.php');
 
 			$o_replicator = new Replicator();
 			$o_replicator->replicate();
@@ -1784,7 +1784,7 @@
 		 *
 		 */
 		public static function fix_permissionsHelp() {
-			return _t("CollectiveAccess must have both read and write access to the temporary storage directory (app/tmp), media directory (media) and HTMLPurifier definition cache (app/lib/core/Parsers/htmlpurifier/standalone/HTMLPurifier/DefinitionCache). A run-time error will be displayed if any of these locations is not accessible to the application. To change these permissions to allow CollectiveAccess to run normally run this command while logged in with administrative/root privileges. You are currently logged in as %1 (uid %2). You can specify which user will be given ownership of the directories using the --user option. If you do not specify a user, the web server user for your server will be automatically determined and used.", caGetProcessUserName(), caGetProcessUserID());
+			return _t("CollectiveAccess must have both read and write access to the temporary storage directory (app/tmp), media directory (media) and HTMLPurifier definition cache (app/lib/Parsers/htmlpurifier/standalone/HTMLPurifier/DefinitionCache). A run-time error will be displayed if any of these locations is not accessible to the application. To change these permissions to allow CollectiveAccess to run normally run this command while logged in with administrative/root privileges. You are currently logged in as %1 (uid %2). You can specify which user will be given ownership of the directories using the --user option. If you do not specify a user, the web server user for your server will be automatically determined and used.", caGetProcessUserName(), caGetProcessUserID());
 		}
 		# -------------------------------------------------------
 		/**
@@ -1905,8 +1905,8 @@
 		 */
 		public static function load_metadata_dictionary_from_excel_file($po_opts=null) {
 
-			require_once(__CA_LIB_DIR__.'/core/Parsers/PHPExcel/PHPExcel.php');
-			require_once(__CA_LIB_DIR__.'/core/Parsers/PHPExcel/PHPExcel/IOFactory.php');
+			require_once(__CA_LIB_DIR__.'/Parsers/PHPExcel/PHPExcel.php');
+			require_once(__CA_LIB_DIR__.'/Parsers/PHPExcel/PHPExcel/IOFactory.php');
 			require_once(__CA_MODELS_DIR__.'/ca_metadata_dictionary_entries.php');
 
 			$t_entry = new ca_metadata_dictionary_entries();
@@ -2184,7 +2184,7 @@
 		 *
 		 */
 		public static function check_media_fixity($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Db.php");
+			require_once(__CA_LIB_DIR__."/Db.php");
 			require_once(__CA_MODELS_DIR__."/ca_object_representations.php");
 
 			if (!($ps_file_path = strtolower((string)$po_opts->getOption('file')))) {
@@ -2508,7 +2508,7 @@
 		 *
 		 */
 		public static function create_ngrams($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Db.php");
+			require_once(__CA_LIB_DIR__."/Db.php");
 
 			$o_db = new Db();
 
@@ -2650,7 +2650,7 @@
 		 *
 		 */
 		public static function reload_object_current_locations($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Db.php");
+			require_once(__CA_LIB_DIR__."/Db.php");
 			require_once(__CA_MODELS_DIR__."/ca_objects.php");
 
 			$o_db = new Db();
@@ -2711,7 +2711,7 @@
 		 *
 		 */
 		public static function clear_caches($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Configuration.php");
+			require_once(__CA_LIB_DIR__."/Configuration.php");
 			$o_config = Configuration::load();
 
 			$ps_cache = strtolower((string)$po_opts->getOption('cache'));
@@ -2781,11 +2781,11 @@
 		 */
 		public static function do_configuration_check($po_opts=null) {
 			
-			include_once(__CA_LIB_DIR__."/core/Search/SearchEngine.php");
-			include_once(__CA_LIB_DIR__."/core/Media.php");
-			include_once(__CA_LIB_DIR__."/ca/ApplicationPluginManager.php");
-			include_once(__CA_LIB_DIR__."/ca/ConfigurationCheck.php");
-			require_once(__CA_LIB_DIR__."/core/Configuration.php");
+			include_once(__CA_LIB_DIR__."/Search/SearchEngine.php");
+			include_once(__CA_LIB_DIR__."/Media.php");
+			include_once(__CA_LIB_DIR__."/ApplicationPluginManager.php");
+			include_once(__CA_LIB_DIR__."/ConfigurationCheck.php");
+			require_once(__CA_LIB_DIR__."/Configuration.php");
 			
 			// Media
 			$t_media = new Media();
@@ -3100,7 +3100,7 @@
 		 *
 		 */
 		public static function precache_search_index($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Db.php");
+			require_once(__CA_LIB_DIR__."/Db.php");
 			$o_db = new Db();
 			
 			CLIUtils::addMessage(_t("Preloading primary search index..."), array('color' => 'bold_blue'));
@@ -3149,7 +3149,7 @@
 		 *
 		 */
 		public static function precache_content($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/core/Db.php");
+			require_once(__CA_LIB_DIR__."/Db.php");
 			
 			$o_config = Configuration::load();
 			if(!(bool)$o_config->get('do_content_caching')) { 
@@ -3272,8 +3272,8 @@
 		 */
 		public static function load_chenhall_nomenclature($po_opts=null) {
 
-			require_once(__CA_LIB_DIR__.'/core/Parsers/PHPExcel/PHPExcel.php');
-			require_once(__CA_LIB_DIR__.'/core/Parsers/PHPExcel/PHPExcel/IOFactory.php');
+			require_once(__CA_LIB_DIR__.'/Parsers/PHPExcel/PHPExcel.php');
+			require_once(__CA_LIB_DIR__.'/Parsers/PHPExcel/PHPExcel/IOFactory.php');
 			require_once(__CA_MODELS_DIR__.'/ca_lists.php');
 			require_once(__CA_MODELS_DIR__.'/ca_locales.php');
 
@@ -3628,7 +3628,7 @@
 		 * @return bool
 		 */
 		public static function push_config_changes($po_opts=null) {
-			require_once(__CA_LIB_DIR__.'/ca/ConfigurationExporter.php');
+			require_once(__CA_LIB_DIR__.'/ConfigurationExporter.php');
 
 			if (!($vs_targets = $po_opts->getOption('targets'))) {
 				CLIUtils::addError(_t("Missing required parameter: targets. Try checking the help for this subcommand."));
@@ -3819,7 +3819,7 @@
 		 * @return bool
 		 */
 		public static function check_url_reference_integrity($po_opts=null) {
-			require_once(__CA_LIB_DIR__.'/ca/Attributes/Values/UrlAttributeValue.php');
+			require_once(__CA_LIB_DIR__.'/Attributes/Values/UrlAttributeValue.php');
 
 			$o_request = new RequestHTTP(null, [
 				'no_headers' => true,
@@ -3869,7 +3869,7 @@
 		 * @return bool
 		 */
 		public static function scan_site_page_templates($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/ca/SitePageTemplateManager.php");
+			require_once(__CA_LIB_DIR__."/SitePageTemplateManager.php");
 			
 			CLIUtils::addMessage(_t("Scanning templates for tags"));
 			$va_results = SitePageTemplateManager::scan();

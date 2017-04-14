@@ -1,6 +1,6 @@
 <?php
 /** ---------------------------------------------------------------------
- * app/lib/ca/Utils/CLITools.php :
+ * app/lib/Utils/CLITools.php :
  * ----------------------------------------------------------------------
  * CollectiveAccess
  * Open-source collections management software
@@ -34,7 +34,7 @@
   *
   */
 
- 	require_once(__CA_LIB_DIR__.'/ca/Utils/CLIBaseUtils.php');
+ 	require_once(__CA_LIB_DIR__.'/Utils/CLIBaseUtils.php');
 	require_once(__CA_APP_DIR__."/helpers/utilityHelpers.php");
  
 	class CLITools extends CLIBaseUtils {
@@ -45,8 +45,8 @@
 		 *
 		 */
 		public static function make_list_from_excel($po_opts=null) {
-			require_once(__CA_LIB_DIR__.'/core/Parsers/PHPExcel/PHPExcel.php');
-			require_once(__CA_LIB_DIR__.'/core/Parsers/PHPExcel/PHPExcel/IOFactory.php');
+			require_once(__CA_LIB_DIR__.'/Parsers/PHPExcel/PHPExcel.php');
+			require_once(__CA_LIB_DIR__.'/Parsers/PHPExcel/PHPExcel/IOFactory.php');
 			
 			$vs_filepath = (string)$po_opts->getOption('file');
 			if (!$vs_filepath) { 
@@ -189,7 +189,7 @@
 		 *
 		 */
 		public static function get_exif_tags($po_opts=null) {
-			require_once(__CA_LIB_DIR__."/ca/Import/DataReaders/ExifDataReader.php");
+			require_once(__CA_LIB_DIR__."/Import/DataReaders/ExifDataReader.php");
 			
 			$vs_directory_path = (string)$po_opts->getOption('directory');
 			if (!$vs_directory_path) { 

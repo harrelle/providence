@@ -1,6 +1,6 @@
 <?php
 /** ---------------------------------------------------------------------
- * app/lib/ca/Sync/Replicator.php :
+ * app/lib/Sync/Replicator.php :
  * ----------------------------------------------------------------------
  * CollectiveAccess
  * Open-source collections management software
@@ -30,7 +30,7 @@
  * ----------------------------------------------------------------------
  */
 
-require_once(__CA_LIB_DIR__."/core/Logging/Logger.php");
+require_once(__CA_LIB_DIR__."/Logging/Logger.php");
 require_once(__CA_MODELS_DIR__."/ca_change_log.php");
 
 use \CollectiveAccessService as CAS;

@@ -34,9 +34,9 @@
  *
  */
 
-require_once(__CA_LIB_DIR__.'/core/Parsers/File_MARC/MARC.php');
+require_once(__CA_LIB_DIR__.'/Parsers/File_MARC/MARC.php');
 
-require_once(__CA_LIB_DIR__.'/ca/Import/BaseDataReader.php');
+require_once(__CA_LIB_DIR__.'/Import/BaseDataReader.php');
 require_once(__CA_APP_DIR__.'/helpers/displayHelpers.php');
 
 class MARCDataReader extends BaseDataReader {

@@ -1,6 +1,6 @@
 <?php
 /** ---------------------------------------------------------------------
- * app/lib/ca/BaseFindController.php : base controller for all "find" operations (search & browse)
+ * app/lib/BaseFindController.php : base controller for all "find" operations (search & browse)
  * ----------------------------------------------------------------------
  * CollectiveAccess
  * Open-source collections management software
@@ -35,15 +35,15 @@
   */
   
  	require_once(__CA_APP_DIR__.'/helpers/printHelpers.php');
- 	require_once(__CA_LIB_DIR__.'/ca/ResultContext.php');
+ 	require_once(__CA_LIB_DIR__.'/ResultContext.php');
  	require_once(__CA_MODELS_DIR__.'/ca_bundle_displays.php');
  	require_once(__CA_MODELS_DIR__."/ca_sets.php");
-	require_once(__CA_LIB_DIR__."/core/AccessRestrictions.php");
- 	require_once(__CA_LIB_DIR__.'/ca/Visualizer.php');
-	require_once(__CA_LIB_DIR__.'/core/Parsers/ZipStream.php');
- 	require_once(__CA_LIB_DIR__.'/core/Print/PDFRenderer.php');
+	require_once(__CA_LIB_DIR__."/AccessRestrictions.php");
+ 	require_once(__CA_LIB_DIR__.'/Visualizer.php');
+	require_once(__CA_LIB_DIR__.'/Parsers/ZipStream.php');
+ 	require_once(__CA_LIB_DIR__.'/Print/PDFRenderer.php');
 	require_once(__CA_MODELS_DIR__.'/ca_data_exporters.php');
- 	require_once(__CA_LIB_DIR__."/ca/ApplicationPluginManager.php");
+ 	require_once(__CA_LIB_DIR__."/ApplicationPluginManager.php");
  	
 	class BaseFindController extends ActionController {
 		# ------------------------------------------------------------------
@@ -435,8 +435,8 @@
 			if(substr($ps_output_type, 0, 4) !== '_pdf') {
 				switch($ps_output_type) {
 					case '_xlsx':
-						require_once(__CA_LIB_DIR__."/core/Parsers/PHPExcel/PHPExcel.php");
-						require_once(__CA_LIB_DIR__."/core/Parsers/PHPExcel/PHPExcel/Writer/Excel2007.php");
+						require_once(__CA_LIB_DIR__."/Parsers/PHPExcel/PHPExcel.php");
+						require_once(__CA_LIB_DIR__."/Parsers/PHPExcel/PHPExcel/Writer/Excel2007.php");
 						$this->render('Results/xlsx_results.php');
 						return;
                     case '_docx':
