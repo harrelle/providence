@@ -1,4 +1,7 @@
 <?php
+
+namespace CA\lib\vimeo;
+
 class phpVimeo
 {
     const API_REST_URL = 'http://vimeo.com/api/rest/v2';

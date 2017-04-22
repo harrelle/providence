@@ -29,6 +29,8 @@
  *
  * ----------------------------------------------------------------------
  */
+ 
+namespace CA\lib\auth\adapters;
 
 require_once(__CA_LIB_DIR__.'/Auth/AbstractLDAPAuthAdapter.php');
 

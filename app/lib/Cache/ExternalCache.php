@@ -29,6 +29,8 @@
  *
  * ----------------------------------------------------------------------
  */
+ 
+namespace CA\lib\cache;
 
 require_once(__CA_LIB_DIR__."/Cache/MemoryCache.php");
 require_once(__CA_LIB_DIR__."/Cache/CAFileSystemCache.php");

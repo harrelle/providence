@@ -10,6 +10,8 @@ require_once(__CA_LIB_DIR__.'/Zend/Search/Lucene/Search/Query/Phrase.php');
 require_once(__CA_LIB_DIR__.'/Zend/Search/Lucene/Search/BooleanExpressionRecognizer.php');
 require_once(__CA_LIB_DIR__.'/Zend/Search/Lucene/Search/QueryEntry.php');
 
+namespace CA\lib\search\common\parsers;
+
 class LuceneSyntaxParserContext {
     /**
      * Default field for the context.

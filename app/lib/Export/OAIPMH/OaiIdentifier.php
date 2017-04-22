@@ -18,6 +18,9 @@
  * @package OaiPmhRepository
  * @subpackage Libraries
  */
+ 
+namespace CA\lib\export\oaipmh;
+ 
 class OaiIdentifier {
 	const OAI_IDENTIFIER_NAMESPACE_URI = 'http://www.openarchives.org/OAI/2.0/oai-identifier';
 	const OAI_IDENTIFIER_SCHEMA_URI = 'http://www.openarchives.org/OAI/2.0/oai-identifier.xsd';

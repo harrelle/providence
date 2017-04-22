@@ -29,6 +29,8 @@
  *
  * ----------------------------------------------------------------------
  */
+ 
+namespace CA\lib\parsers;
 
 require_once(__CA_LIB_DIR__.'/Parsers/ExpressionParser/ExpressionVisitor.php');
 

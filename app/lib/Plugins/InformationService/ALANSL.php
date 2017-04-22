@@ -29,6 +29,8 @@
  *
  * ----------------------------------------------------------------------
  */
+ 
+namespace CA\lib\plugins\informationservice;
 
 /**
  * @file A class to interface with the ALA National Species Lists API

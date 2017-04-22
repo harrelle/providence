@@ -30,6 +30,8 @@
  * ----------------------------------------------------------------------
  */
  
+namespace CA\lib\controller\appcontroller;
+ 
 	class AppControllerPlugin {
 		# -------------------------------------------------------
 		private $opo_request;

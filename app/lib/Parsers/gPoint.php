@@ -43,6 +43,9 @@
 **					were not being converted to radians prior to calculating the
 **					distance. Thanks to Enrico Benco for finding pointing it out.
 */
+
+namespace CA\lib\parsers;
+
 define ("meter2nm", (1/1852));
 define ("nm2meter", 1852);
 

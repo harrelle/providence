@@ -29,6 +29,8 @@
  *
  * ----------------------------------------------------------------------
  */
+ 
+namespace CA\lib\auth;
 
 define('__CA_AUTH_ADAPTER_FEATURE_RESET_PASSWORDS__', 1);
 define('__CA_AUTH_ADAPTER_FEATURE_UPDATE_PASSWORDS__', 2);

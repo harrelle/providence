@@ -29,6 +29,8 @@
  *
  * ----------------------------------------------------------------------
  */
+ 
+namespace CA\lib\auth;
 
 require_once(__CA_LIB_DIR__.'/Auth/IAuthAdapter.php');
 

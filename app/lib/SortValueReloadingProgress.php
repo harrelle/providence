@@ -29,6 +29,8 @@
  *
  * ----------------------------------------------------------------------
  */
+
+namespace CA\lib;
  
  /**
   * Implements reloading of sortable values invoked via the web UI

@@ -29,6 +29,8 @@
  *
  * ----------------------------------------------------------------------
  */
+ 
+namespace CA\lib\export\exportformats;
 
 require_once(__CA_LIB_DIR__.'/Export/BaseExportFormat.php');
 

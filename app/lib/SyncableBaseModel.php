@@ -30,6 +30,8 @@
  * ----------------------------------------------------------------------
  */
 
+namespace CA\lib;
+
 require_once(__CA_MODELS_DIR__ . '/ca_guids.php');
 
 trait SyncableBaseModel {

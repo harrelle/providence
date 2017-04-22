@@ -30,7 +30,7 @@
  * ----------------------------------------------------------------------
  */
 
-namespace ElasticSearch;
+namespace CA\lib\plugins\searchengine\elasticsearch;
 
 class Mapping {
 	/**

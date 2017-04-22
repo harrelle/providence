@@ -30,7 +30,7 @@
  * ----------------------------------------------------------------------
  */
 
-namespace CA\Media\Remote;
+namespace CA\lib\media\remote;
 
 require_once(__CA_LIB_DIR__.'/Media/Remote/Base.php');
 

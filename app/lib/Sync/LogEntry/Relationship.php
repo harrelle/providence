@@ -30,7 +30,7 @@
  * ----------------------------------------------------------------------
  */
 
-namespace CA\Sync\LogEntry;
+namespace CA\lib\sync\logentry;
 
 use Hoa\Core\Exception\Exception;
 

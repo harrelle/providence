@@ -3,6 +3,8 @@
 require_once(__CA_LIB_DIR__.'/Zend/Search/Lucene/FSM.php');
 require_once(__CA_LIB_DIR__.'/Zend/Search/Lucene/Search/QueryToken.php');
 
+namespace CA\lib\search\common\parsers;
+
 class LuceneSyntaxLexer extends Zend_Search_Lucene_FSM
 {
     /** State Machine states */

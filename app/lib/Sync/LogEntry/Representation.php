@@ -30,7 +30,7 @@
  * ----------------------------------------------------------------------
  */
 
-namespace CA\Sync\LogEntry;
+namespace CA\lib\sync\logentry;
 
 require_once(__CA_LIB_DIR__.'/Sync/LogEntry/Bundlable.php');
 

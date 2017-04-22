@@ -11,6 +11,8 @@
  * @link          http://ad7six.com
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+ 
+namespace CA\lib\utils;
 
 /**
  * ProgressBar 

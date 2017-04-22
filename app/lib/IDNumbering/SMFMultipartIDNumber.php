@@ -29,6 +29,8 @@
  * File created by Gautier Michelin (www.ideesculture.com) for specific Musées de France requirements
  */
  
+namespace CA\lib\idnumbering;
+ 
 
 	require_once(__CA_LIB_DIR__ ."/Configuration.php");
 	require_once(__CA_LIB_DIR__ ."/Datamodel.php");

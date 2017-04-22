@@ -37,6 +37,7 @@ POSSIBILITY OF SUCH DAMAGE.
  * @license  Revised BSD
   */
 
+namespace CA\lib\utils;
 
 class Encoding {
     

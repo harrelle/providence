@@ -29,6 +29,8 @@
  *
  * ----------------------------------------------------------------------
  */
+
+namespace CA\lib;
  
  /**
   * Implements reindexing of search indices invoked via the web UI

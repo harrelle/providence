@@ -30,9 +30,8 @@
  * ----------------------------------------------------------------------
  */
 
-namespace ElasticSearch;
-
-use ElasticSearch\FieldTypes\FieldType;
+namespace CA\lib\plugins\searchengine\elasticsearch;
+use CA\lib\plugins\searchengine\elasticsearch\fieldtypes;
 
 require_once(__CA_APP_DIR__.'/helpers/listHelpers.php');
 

@@ -30,6 +30,8 @@
  * ----------------------------------------------------------------------
  */
  
+namespace CA\lib\service;
+ 
  require_once(__CA_LIB_DIR__."/Media.php");
  require_once(__CA_LIB_DIR__."/Parsers/TilepicParser.php");
  require_once(__CA_MODELS_DIR__."/ca_object_representations.php");

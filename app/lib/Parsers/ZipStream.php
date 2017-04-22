@@ -30,6 +30,8 @@
  * ----------------------------------------------------------------------
  */
  
+namespace CA\lib\parsers;
+ 
  /**
   * Class to create and stream large ZIP archives via HTTP
   *

@@ -3,6 +3,8 @@
 require_once __CA_LIB_DIR__.'/Zend/Search/Lucene/Index/Term.php';
 require_once __CA_LIB_DIR__.'/Zend/Search/Lucene/Search/QueryEntry.php';
 
+namespace CA\lib\search\common\parsers\queryentry;
+
 class TermQueryEntry extends Zend_Search_Lucene_Search_QueryEntry {
 	/**
 	 * Term value

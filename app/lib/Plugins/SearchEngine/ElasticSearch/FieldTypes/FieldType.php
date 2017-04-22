@@ -30,7 +30,7 @@
  * ----------------------------------------------------------------------
  */
 
-namespace ElasticSearch\FieldTypes;
+namespace CA\lib\plugins\searchengine\elasticsearch\fieldtypes;
 
 require_once(__CA_LIB_DIR__.'/Plugins/SearchEngine/ElasticSearch/FieldTypes/DateRange.php');
 require_once(__CA_LIB_DIR__.'/Plugins/SearchEngine/ElasticSearch/FieldTypes/Geocode.php');

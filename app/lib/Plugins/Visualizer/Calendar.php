@@ -29,6 +29,8 @@
  *
  * ----------------------------------------------------------------------
  */
+ 
+namespace CA\lib\plugins\visualizer;
 
 /**
  * Calendar visualizer plugin created by idéesculture

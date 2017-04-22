@@ -1,4 +1,6 @@
 <?php
+namespace CA\lib\utils;
+
 //
 // Modified from includes/unicode.php in Drupal v4.7.3 (http://www.drupal.org)
 //

@@ -25,6 +25,8 @@
  *
  * ----------------------------------------------------------------------
  */
+ 
+namespace CA\lib;
 
 require_once(__CA_LIB_DIR__.'/Controller/AppController/AppControllerPlugin.php');
 require_once(__CA_LIB_DIR__.'/Configuration.php');

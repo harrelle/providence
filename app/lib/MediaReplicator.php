@@ -25,6 +25,8 @@
  *
  * ----------------------------------------------------------------------
  */
+ 
+namespace CA\lib;
 
 define("__CA_MEDIA_REPLICATION_STATE_PENDING__", 1);	// replication will start
 define("__CA_MEDIA_REPLICATION_STATE_UPLOADING__", 2);	// media is being sent

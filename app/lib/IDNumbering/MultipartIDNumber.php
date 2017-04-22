@@ -30,6 +30,8 @@
  * ----------------------------------------------------------------------
  */
  
+namespace CA\lib\idnumbering;
+ 
 require_once(__CA_LIB_DIR__."/Configuration.php");
 require_once(__CA_LIB_DIR__."/Db.php");
 require_once(__CA_LIB_DIR__."/IDNumbering/IDNumber.php");

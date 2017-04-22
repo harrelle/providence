@@ -8,6 +8,8 @@
  * @package XML_Formatter
  */
 
+namespace CA\lib\parsers;
+
 /**
  * XML_Formatter class responsible for formatting an XML stream
  * to an indented human readable format.

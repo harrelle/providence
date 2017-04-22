@@ -8,6 +8,8 @@
  * @link http://code.google.com/p/ganon/
  * @license http://dev.perl.org/licenses/artistic.html Artistic License
  */
+ 
+namespace CA\lib\parsers;
 
 function str_get_dom($str, $return_root = true) {
 	$a = new HTML_Parser_HTML5($str);

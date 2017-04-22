@@ -30,7 +30,7 @@
  * ----------------------------------------------------------------------
  */
 
-namespace ElasticSearch;
+namespace CA\lib\plugins\searchengine\elasticsearch;
 
 require_once(__CA_LIB_DIR__.'/Plugins/SearchEngine/ElasticSearch/Field.php');
 require_once(__CA_MODELS_DIR__.'/ca_metadata_elements.php');

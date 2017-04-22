@@ -85,6 +85,9 @@
  *  @author Jon Abernathy <jon@chuggnutt.com>
  *  @version 2.1
  */
+ 
+namespace CA\lib\search\common\stemmer;
+ 
 class SnoballStemmer
 {
 	private $opa_stem_cache;

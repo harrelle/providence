@@ -25,6 +25,9 @@
  *
  * ----------------------------------------------------------------------
  */
+ 
+namespace CA\lib\plugins\currencyconversion;
+
 	require_once(__CA_LIB_DIR__."/Plugins/CurrencyConversion/BaseCurrencyConversionPlugin.php");
 	require_once(__CA_LIB_DIR__."/Zend/Currency.php");
 	

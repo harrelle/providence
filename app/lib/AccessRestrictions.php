@@ -30,6 +30,8 @@
  * ----------------------------------------------------------------------
  */
 
+namespace CA\lib;
+
 require_once(__CA_LIB_DIR__."/Configuration.php");
 require_once(__CA_MODELS_DIR__."/ca_users.php");
 

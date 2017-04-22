@@ -26,6 +26,8 @@
  * ----------------------------------------------------------------------
  */
  
+ namespace CA\lib;
+ 
  	require_once(__CA_LIB_DIR__.'/Configuration.php');
  	require_once(__CA_LIB_DIR__.'/BaseObject.php');
  	require_once(__CA_MODELS_DIR__.'/ca_item_comments.php');

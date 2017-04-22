@@ -18,6 +18,8 @@ require_once(__CA_LIB_DIR__.'/Search/Common/Parsers/LuceneSyntaxLexer.php');
 require_once(__CA_LIB_DIR__.'/Search/Common/Parsers/QueryEntry/PhraseQueryEntry.php');
 require_once(__CA_LIB_DIR__.'/Search/Common/Parsers/QueryEntry/TermQueryEntry.php');
 
+namespace CA\lib\search\common\parsers;
+
 class LuceneSyntaxParser extends Zend_Search_Lucene_FSM {
 
 	private $opo_lexer;
